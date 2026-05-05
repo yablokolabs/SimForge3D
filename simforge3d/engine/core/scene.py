@@ -62,7 +62,9 @@ class SceneManager:
             )
         )
 
-    def add_obstacles(self, positions: Iterable[Iterable[float]], radius: float = 0.6) -> list[WorldObject]:
+    def add_obstacles(
+        self, positions: Iterable[Iterable[float]], radius: float = 0.6
+    ) -> list[WorldObject]:
         obstacles: list[WorldObject] = []
         for idx, position in enumerate(positions):
             obstacles.append(
@@ -118,5 +120,7 @@ class SceneManager:
             "step_count": self.step_count,
             "elapsed_time": self.elapsed_time,
             "objects": {object_id: obj.to_dict() for object_id, obj in self.objects.items()},
-            "agents": {agent_id: agent.state().to_dict() for agent_id, agent in self.agents.items()},
+            "agents": {
+                agent_id: agent.state().to_dict() for agent_id, agent in self.agents.items()
+            },
         }

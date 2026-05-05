@@ -15,7 +15,9 @@ class ObservationSpace:
             return False
         if self.required_keys.issubset(value):
             return True
-        return all(isinstance(item, dict) and self.required_keys.issubset(item) for item in value.values())
+        return all(
+            isinstance(item, dict) and self.required_keys.issubset(item) for item in value.values()
+        )
 
     def sample(self) -> dict[str, Any]:
         return {

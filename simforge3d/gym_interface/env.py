@@ -54,10 +54,14 @@ class SimForgeEnv:
         self._app: PandaSimulationApp | None = None
         self._done = False
         self._episode_id = 0
-        self._logger = EpisodeLogger(self.config.log_dir) if self.config.enable_episode_logging else None
+        self._logger = (
+            EpisodeLogger(self.config.log_dir) if self.config.enable_episode_logging else None
+        )
         self._replay = ReplayRecorder(self.config.replay_dir) if self.config.enable_replay else None
 
-    def reset(self, seed: int | None = None, options: Mapping[str, Any] | None = None) -> dict[str, Any]:
+    def reset(
+        self, seed: int | None = None, options: Mapping[str, Any] | None = None
+    ) -> dict[str, Any]:
         del options  # reserved for Gym compatibility
         if seed is not None:
             random.seed(seed)
@@ -117,7 +121,9 @@ class SimForgeEnv:
             if self._done:
                 self._logger.end_episode(info)
         if self._replay:
-            self._replay.log_step(self.scene.snapshot(), normalized_actions, reward, self._done, info)
+            self._replay.log_step(
+                self.scene.snapshot(), normalized_actions, reward, self._done, info
+            )
             if self._done:
                 self._replay.end_episode(info)
         return observation, reward, self._done, info

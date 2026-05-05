@@ -16,7 +16,9 @@ class NavigationScenario(BaseScenario):
     target_position: tuple[float, float, float] | Vector3 = (5.0, 5.0, 0.0)
     start_position: tuple[float, float, float] | Vector3 = (0.0, 0.0, 0.0)
     start_yaw_degrees: float = 45.0
-    obstacles: list[Iterable[float]] = field(default_factory=lambda: [(2.0, 2.0, 0.0), (3.0, 3.0, 0.0)])
+    obstacles: list[Iterable[float]] = field(
+        default_factory=lambda: [(2.0, 2.0, 0.0), (3.0, 3.0, 0.0)]
+    )
     target_radius: float = 0.65
     step_penalty: float = -0.01
     success_reward: float = 10.0

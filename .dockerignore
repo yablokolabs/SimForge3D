@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*.egg-info
+.pytest_cache
+.ruff_cache
+.mypy_cache
+.coverage
+htmlcov
+
+# Virtual environments
+.venv
+.venv-test
+venv
+
+# Build artifacts
+build
+dist
+wheelhouse
+
+# Runtime output
+runs
+replays
+logs
+
+# Development files
+.github
+docs
+cpp
+tests
+.DS_Store
+.idea
+.vscode
+*.md
+!README.md
+!LICENSE

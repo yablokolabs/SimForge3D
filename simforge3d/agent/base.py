@@ -48,7 +48,9 @@ class BaseAgent:
         )
 
     def observe(self, scene: SceneManager, config: SimulationConfig) -> AgentObservation:
-        nearby = [obj.to_dict() for obj in scene.nearby_objects(self.position, config.observation_radius)]
+        nearby = [
+            obj.to_dict() for obj in scene.nearby_objects(self.position, config.observation_radius)
+        ]
         return AgentObservation(
             agent_id=self.agent_id,
             position=self.position.as_tuple(),
@@ -69,7 +71,9 @@ class BaseAgent:
             scene.emit_event("noop", agent_id=self.agent_id)
             return True
         if action.command == "turn":
-            self.yaw_degrees = (self.yaw_degrees + action.amount * self.turn_speed_degrees * dt) % 360.0
+            self.yaw_degrees = (
+                self.yaw_degrees + action.amount * self.turn_speed_degrees * dt
+            ) % 360.0
             scene.emit_event("turn", agent_id=self.agent_id, yaw_degrees=self.yaw_degrees)
             return True
         if action.command == "move":

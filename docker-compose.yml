@@ -1,9 +1,25 @@
 services:
-  simforge3d-dev:
+  simforge3d:
     build: .
+    image: simforge3d:latest
+    environment:
+      SIMFORGE3D_HEADLESS: "1"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import simforge3d; print('ok')"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+  simforge3d-dev:
+    build:
+      context: .
+      target: base
     image: simforge3d:dev
     environment:
       SIMFORGE3D_HEADLESS: "1"
     volumes:
       - .:/app
-    command: pytest
+    working_dir: /app
+    command: ["python", "-m", "pytest", "--tb=short"]

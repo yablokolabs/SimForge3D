@@ -14,7 +14,12 @@ def test_navigation_env_headless_step_contract():
 
 
 def test_navigation_can_succeed():
-    scenario = NavigationScenario(target_position=(0.0, 0.2, 0.0), start_position=(0.0, 0.0, 0.0), obstacles=[], target_radius=0.35)
+    scenario = NavigationScenario(
+        target_position=(0.0, 0.2, 0.0),
+        start_position=(0.0, 0.0, 0.0),
+        obstacles=[],
+        target_radius=0.35,
+    )
     env = SimForgeEnv(scenario, headless=True)
     env.reset(seed=1)
     _, reward, done, info = env.step("move_forward")

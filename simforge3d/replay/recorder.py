@@ -17,7 +17,9 @@ class ReplayRecorder:
 
     def start_episode(self, episode_id: int, initial_state: dict[str, Any]) -> None:
         self.close()
-        self._file = (self.replay_dir / f"replay_{episode_id:06d}.jsonl").open("w", encoding="utf-8")
+        self._file = (self.replay_dir / f"replay_{episode_id:06d}.jsonl").open(
+            "w", encoding="utf-8"
+        )
         self._write({"event": "start", "state": initial_state})
 
     def log_step(
@@ -28,7 +30,16 @@ class ReplayRecorder:
         done: bool,
         info: dict[str, Any],
     ) -> None:
-        self._write({"event": "step", "state": state, "action": action, "reward": reward, "done": done, "info": info})
+        self._write(
+            {
+                "event": "step",
+                "state": state,
+                "action": action,
+                "reward": reward,
+                "done": done,
+                "info": info,
+            }
+        )
 
     def end_episode(self, info: dict[str, Any]) -> None:
         self._write({"event": "end", "info": info})

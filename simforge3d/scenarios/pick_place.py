@@ -33,7 +33,13 @@ class PickPlaceScenario(BaseScenario):
 
     def setup(self, scene: SceneManager) -> None:
         scene.add_floor()
-        scene.add_agent(BaseAgent(self.primary_agent_id, position=Vector3.from_iterable(self.start_position), yaw_degrees=90.0))
+        scene.add_agent(
+            BaseAgent(
+                self.primary_agent_id,
+                position=Vector3.from_iterable(self.start_position),
+                yaw_degrees=90.0,
+            )
+        )
         scene.add_object(
             WorldObject(
                 object_id=self.object_id,

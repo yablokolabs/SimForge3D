@@ -20,11 +20,11 @@ def main() -> None:
     )
     try:
         for episode in range(args.episodes):
-            obs = env.reset(seed=episode)
+            env.reset(seed=episode)
             done = False
             total_reward = 0.0
             while not done:
-                obs, reward, done, info = env.step(env.action_space.sample())
+                _obs, reward, done, info = env.step(env.action_space.sample())
                 total_reward += reward
                 if not args.headless:
                     env.render()

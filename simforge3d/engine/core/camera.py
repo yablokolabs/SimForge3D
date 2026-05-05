@@ -21,7 +21,7 @@ class CameraController:
         look_at = target.as_tuple() if target else self.config.look_at
         # Panda3D NodePath API is deliberately accessed dynamically to keep this
         # module importable without Panda3D in headless tests.
-        camera.setPos(*position)
-        camera.lookAt(*look_at)
-        lens = camera.node().getLens()
+        camera.setPos(*position)  # type: ignore[attr-defined]
+        camera.lookAt(*look_at)  # type: ignore[attr-defined]
+        lens = camera.node().getLens()  # type: ignore[attr-defined]
         lens.setFov(self.config.fov_degrees)

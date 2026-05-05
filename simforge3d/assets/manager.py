@@ -40,7 +40,7 @@ class AssetManager:
         size = float(obj.metadata.get("size", obj.radius * 2.0))
         maker = CardMaker(obj.object_id)
         maker.setFrame(-size / 2.0, size / 2.0, -size / 2.0, size / 2.0)
-        node = (parent or self.render_root).attachNewNode(maker.generate())
+        node = (parent or self.render_root).attachNewNode(maker.generate())  # type: ignore[union-attr]
         node.setP(obj.metadata.get("pitch", -90.0))
         node.setPos(*obj.position.as_tuple())
         node.setColor(0.25, 0.25, 0.25, 1.0)
@@ -54,7 +54,7 @@ class AssetManager:
         size = max(0.2, obj.radius * 2.0)
         maker = CardMaker(obj.object_id)
         maker.setFrame(-size / 2.0, size / 2.0, -size / 2.0, size / 2.0)
-        node = (parent or self.render_root).attachNewNode(maker.generate())
+        node = (parent or self.render_root).attachNewNode(maker.generate())  # type: ignore[union-attr]
         node.setP(-90.0)
         node.setPos(*obj.position.as_tuple())
         color = {
