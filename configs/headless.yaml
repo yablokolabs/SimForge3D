@@ -1,0 +1,10 @@
+headless: true
+fixed_dt: 0.0333333333
+target_fps: 120
+max_steps: 500
+observation_radius: 6.0
+world_bounds: [-20.0, 20.0, -20.0, 20.0]
+enable_episode_logging: true
+enable_replay: true
+log_dir: runs
+replay_dir: replays

@@ -1,0 +1,9 @@
+services:
+  simforge3d-dev:
+    build: .
+    image: simforge3d:dev
+    environment:
+      SIMFORGE3D_HEADLESS: "1"
+    volumes:
+      - .:/app
+    command: pytest

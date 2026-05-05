@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling>=1.26"]
+build-backend = "hatchling.build"
+
+[project]
+name = "SimForge3D"
+version = "0.1.0"
+description = "A Panda3D-based modular 3D simulation environment for AI training and evaluation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Yablokolabs" }]
+keywords = ["panda3d", "reinforcement-learning", "simulation", "gym", "ai-agents"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Games/Entertainment :: Simulation",
+]
+dependencies = [
+  "panda3d>=1.10.14",
+]
+
+[project.optional-dependencies]
+gym = ["gymnasium>=0.29"]
+yaml = ["PyYAML>=6.0"]
+dev = ["pytest>=8.0", "ruff>=0.6", "mypy>=1.10", "build>=1.2"]
+
+[project.urls]
+Homepage = "https://github.com/yablokolabs/SimForge3D"
+Issues = "https://github.com/yablokolabs/SimForge3D/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["simforge3d"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+packages = ["simforge3d"]
+ignore_missing_imports = true
+strict = false
